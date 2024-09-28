@@ -1,1 +1,58 @@
-<p>view-all-quest works!</p>
+<div class="questions-container" *ngFor="let question of questions">
+    <div class="question-summary">
+        <div class="question-stats">
+            <div class="votes">
+                <span class="vote-count">12</span>
+                <span class="vote-text">votes</span>
+            </div>
+            <div class="answers">
+                <span class="answer-count">3</span>
+                <span class="answer-text">answers</span>
+            </div>
+            <div class="views">
+                <span class="view-count">20</span>
+                <span class="view-text">views</span>
+            </div>
+        </div>
+
+        <div class="question-details">
+            <h3 class="question-title"><a [routerLink]="['/single-question']">{{question.title}} </a></h3>
+            <div class="question-meta">
+                <span class="tags"><a href="#" class="tag">{{question.tags}}</a>
+                    asked by <a href="#" class="user-name">JohnDoe</a> <span class="time-ago">2 hours ago</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <!-- Duplicate this block for multiple questions
+    <div class="question-summary">
+        <div class="question-stats">
+            <div class="votes">
+                <span class="vote-count">5</span>
+                <span class="vote-text">votes</span>
+            </div>
+            <div class="answers">
+                <span class="answer-count">1</span>
+                <span class="answer-text">answer</span>
+            </div>
+            <div class="views">
+                <span class="view-count">35</span>
+                <span class="view-text">views</span>
+            </div>
+        </div>
+
+        <div class="question-details">
+            <h3 class="question-title"><a href="#">How to make API calls in React?</a></h3>
+            <div class="question-meta">
+                <span class="tags"><a href="#" class="tag">reactjs</a> <a href="#" class="tag">javascript</a></span>
+                <span class="user-info">
+                    asked by <a href="#" class="user-name">JaneDoe</a> <span class="time-ago">3 hours ago</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div> -->

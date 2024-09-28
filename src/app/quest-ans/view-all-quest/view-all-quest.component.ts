@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseService } from 'src/app/shared/services/database.service';
 
 @Component({
   selector: 'app-view-all-quest',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./view-all-quest.component.css']
 })
 export class ViewAllQuestComponent {
+
+  constructor(private databaseService : DatabaseService){}
+
+  
+  ngOnInit(){
+   
+  }
+   questions = this.databaseService.questions
+ 
+
+
 
 }
