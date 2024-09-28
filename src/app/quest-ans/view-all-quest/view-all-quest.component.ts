@@ -15,7 +15,10 @@ export class ViewAllQuestComponent {
    
   }
    questions = this.databaseService.questions
- 
+  
+   description = this.databaseService.questions.description
+
+   
 
 
 

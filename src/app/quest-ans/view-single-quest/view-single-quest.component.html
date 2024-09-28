@@ -1,1 +1,58 @@
-<p>view-single-quest works!</p>
+<!-- 
+    <header *ngFor="let question of questions">
+        <h1>{{question.title}}</h1>
+        <div class="question-details">
+            <span>Asked by User123</span>
+            <span>on September 28, 2024</span>
+        </div>
+    </header>
+
+    <main *ngFor="let question of questions">
+
+        <section class="answers-section">
+            <h2>Answers</h2>
+
+            <div class="answer">
+                <div class="answer-details">
+                    <span>Answered by User456</span>
+                    <span>on September 29, 2024</span>
+                </div>
+                <div class="answer-body">
+                    <p>This is a detailed answer to the question. The user provides an explanation or a solution here.</p>
+                </div>
+                <div class="vote">
+                    <button>Upvote</button>
+                    <button>Downvote</button>
+                    <span>Score: 10</span>
+                </div>
+            </div>
+
+            <div class="answer">
+                <div class="answer-details">
+                    <span>Answered by User789</span>
+                    <span>on September 30, 2024</span>
+                </div>
+                <div class="answer-body">
+                    <p>This is another answer providing a different perspective or solution.</p>
+                </div>
+                <div class="vote">
+                    <button>Upvote</button>
+                    <button>Downvote</button>
+                    <span>Score: 5</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<angular-editor formControlName="htmlContent" [config]="config"></angular-editor> -->
+
+<form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
+    <div>
+     <label>Quest Description:</label>
+     <angular-editor formControlName="htmlContent" [config]="config"></angular-editor>
+   </div>
+ 
+     <button type="submit">Create Question</button>
+ </form>
+
+<button class="p-2 m-3 border rounded-3">Submit Answer</button>

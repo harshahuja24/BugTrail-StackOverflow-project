@@ -13,6 +13,7 @@ export class RegisterComponent {
   isValidPassword = true;
   isValidUsername = true;
 
+
   constructor(private databaseService:DatabaseService, private router:Router){
 
   }
@@ -90,7 +91,5 @@ export class RegisterComponent {
     this.registerForm.reset();
     this.router.navigate(['/login'])
   }
-
-
 
 }

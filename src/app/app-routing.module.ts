@@ -27,15 +27,15 @@ const routes: Routes = [
     component:RegisterComponent
   },
   {
-    path:'all-questions',
+    path:'all',
     component:ViewAllQuestComponent
   },
   {
-    path:'single-question',
+    path:'single/:id',
     component:ViewSingleQuestComponent
   },
   {
-    path:'create-question',
+    path:'create',
     component:CreateQuestComponent
   },
   {

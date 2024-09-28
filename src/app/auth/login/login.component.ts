@@ -8,7 +8,7 @@ import { DatabaseService } from 'src/app/shared/services/database.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent {
 
 
   loginForm = new FormGroup({

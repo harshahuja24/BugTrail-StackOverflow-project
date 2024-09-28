@@ -200,7 +200,6 @@
 //     return this.databaseService.tags.filter(tag => tag.selected).map(tag => tag.name);
 //   }
 // }
-
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Tags } from 'src/app/shared/interfaces/tags.interface';
@@ -244,15 +243,6 @@ export class CreateQuestComponent {
       { name: "titleText", class: "titleText", tag: "h1" }
     ]
   };
-  generateDataModel(){
-    return{
-      id: ++this.databaseService.questionCount,
-      authorId: this.databaseService.loggedInUserId,
-      upVotes : 0,
-      downVotes : 0,
-      activeYN : 1,
-    }
-  }
 
   // On form submission
   onSubmit() {

@@ -15,6 +15,9 @@ export class DatabaseService {
 
   loggedInUserId = localStorage.getItem("loggedInUserId") ?? "";
 
+  answers = JSON.parse(localStorage.getItem("answers")??"[]")
+  ansCounter = this.answers.length
+
   tags:Tags[] = [
     {
       id:1,
@@ -37,4 +40,6 @@ export class DatabaseService {
       selected: false
     },
   ]
+  questionCount =  this.questions.length
+
 }
