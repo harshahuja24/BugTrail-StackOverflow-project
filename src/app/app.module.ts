@@ -9,6 +9,8 @@ import { ProfileModule } from './profile/profile.module';
 import { QuestAnsModule } from './quest-ans/quest-ans.module';
 import { SharedModule } from './shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule} from '@angular/common/http';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [

@@ -6,8 +6,10 @@ import { ViewSingleQuestComponent } from './view-single-quest/view-single-quest.
 import { VotingComponent } from './voting/voting.component';
 import { SearchComponent } from './search/search.component';
 import { RouterModule } from '@angular/router';
-
-
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,12 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    BrowserModule,
+     FormsModule,
+      AngularEditorModule,
+       HttpClientModule,
+       ReactiveFormsModule
   ],
   exports:[
     CreateQuestComponent,
