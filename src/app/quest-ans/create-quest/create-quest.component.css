@@ -4,6 +4,7 @@ form {
     gap: 1rem;
     max-width: 600px;
     margin: 0 auto;
+    margin-top: 30px;
     background-color: #fbfbfd; /* Matches the footer background */
     padding: 2rem;
     border-radius: 10px;

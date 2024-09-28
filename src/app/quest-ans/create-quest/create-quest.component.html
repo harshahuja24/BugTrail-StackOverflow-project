@@ -11,7 +11,7 @@
   
     <div>
       <label>Quest Tags:</label>
-      <div *ngFor="let tag of tags; let i = index">
+      <div *ngFor="let tag of tags">
         <label>
           <input type="checkbox" [checked]="tag.selected" (change)="toggleTagSelection(tag)">
           {{ tag.name }}
@@ -22,10 +22,10 @@
     <button type="submit">Create Question</button>
   </form>
   
-  <h5>Quest Preview:</h5>
+  <!-- <h5>Quest Preview:</h5>
   <div>
     <h3>{{ createQuestForm.get('questTitle')?.value }}</h3>
     <div [innerHTML]="createQuestForm.get('htmlContent')?.value"></div>
     <p>Tags: {{ getSelectedTags() }}</p>
-  </div>
+  </div> -->
   
