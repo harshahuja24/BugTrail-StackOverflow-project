@@ -244,6 +244,19 @@ export class CreateQuestComponent {
     ]
   };
 
+  generateDataModel(){
+
+    return{
+      id:++this.databaseService.questionCount,
+    authorId: this.databaseService.loggedInUserId,
+    noOfLikes:0,
+    activeYN:1,
+    ...this.createQuestForm.value
+
+    }
+    
+  }
+
   // On form submission
   onSubmit() {
     console.log(this.tags)
@@ -255,6 +268,7 @@ export class CreateQuestComponent {
         tags: this.getSelectedTags(),
         ...this.generateDataModel()
       };
+
 
      
 console.log(newQuestion);

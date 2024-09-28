@@ -40,6 +40,5 @@ export class DatabaseService {
       selected: false
     },
   ]
-  questionCount =  this.questions.length
 
 }
