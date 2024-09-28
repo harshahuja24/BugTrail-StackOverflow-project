@@ -14,12 +14,8 @@ export class DatabaseService {
 
   loggedInUserId = localStorage.getItem("loggedInUserId") ?? "";
 
-  users:any = JSON.parse(localStorage.getItem("users") ?? "[]")
-  userCounter:number = this.users.length;
-
-  loggedInUserId = localStorage.getItem("loggedInUserId") ?? "";
-
-  questDetails = localStorage.getItem("lo")
+  answers = JSON.parse(localStorage.getItem("answers")??"[]")
+  ansCounter = this.answers.length
 
   tags:Tags[] = [
     {

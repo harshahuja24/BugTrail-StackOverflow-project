@@ -31,7 +31,7 @@ const routes: Routes = [
     component:ViewAllQuestComponent
   },
   {
-    path:'single',
+    path:'single/:id',
     component:ViewSingleQuestComponent
   },
   {

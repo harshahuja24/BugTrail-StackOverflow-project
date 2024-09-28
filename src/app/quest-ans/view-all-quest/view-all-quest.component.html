@@ -16,7 +16,7 @@
         </div>
 
         <div class="question-details">
-            <h3 class="question-title"><a [routerLink]="['/single-question']">{{question.title}} </a></h3>
+            <h3 class="question-title"><a [routerLink]="['/single',question.id]">{{question.title}} </a></h3>
             <div class="question-meta">
                 <span class="tags"><a href="#" class="tag">{{question.tags}}</a>
                     asked by <a href="#" class="user-name">JohnDoe</a> <span class="time-ago">2 hours ago</span>

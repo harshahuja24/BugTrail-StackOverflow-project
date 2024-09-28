@@ -200,6 +200,7 @@
 //     return this.databaseService.tags.filter(tag => tag.selected).map(tag => tag.name);
 //   }
 // }
+
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Tags } from 'src/app/shared/interfaces/tags.interface';

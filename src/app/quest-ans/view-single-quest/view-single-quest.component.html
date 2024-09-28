@@ -1,23 +1,13 @@
-
-    <header>
-        <h1>Question Title</h1>
+<!-- 
+    <header *ngFor="let question of questions">
+        <h1>{{question.title}}</h1>
         <div class="question-details">
             <span>Asked by User123</span>
             <span>on September 28, 2024</span>
         </div>
     </header>
 
-    <main>
-        <section class="question-section">
-            <div class="question-body">
-                <p>This is the detailed description of the question. The user asks about a specific programming issue or query here.</p>
-            </div>
-            <div class="tags">
-                <span>Angular</span>
-                <span>JavaScript</span>
-                <span>CKEditor</span>
-            </div>
-        </section>
+    <main *ngFor="let question of questions">
 
         <section class="answers-section">
             <h2>Answers</h2>
@@ -54,7 +44,15 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 StackOverflow Clone</p>
-    </footer>
+<angular-editor formControlName="htmlContent" [config]="config"></angular-editor> -->
 
+<form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
+    <div>
+     <label>Quest Description:</label>
+     <angular-editor formControlName="htmlContent" [config]="config"></angular-editor>
+   </div>
+ 
+     <button type="submit">Create Question</button>
+ </form>
+
+<button class="p-2 m-3 border rounded-3">Submit Answer</button>
