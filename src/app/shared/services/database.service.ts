@@ -9,6 +9,10 @@ export class DatabaseService {
   constructor() { }
 
   questions:any = JSON.parse(localStorage.getItem("questions") ?? "[]")
+  users:any = JSON.parse(localStorage.getItem("users") ?? "[]")
+  userCounter:number = this.users.length;
+
+  loggedInUserId = localStorage.getItem("loggedInUserId") ?? "";
 
   users:any = JSON.parse(localStorage.getItem("users") ?? "[]")
   userCounter:number = this.users.length;

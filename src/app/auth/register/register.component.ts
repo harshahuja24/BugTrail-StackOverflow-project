@@ -13,6 +13,7 @@ export class RegisterComponent {
   isValidPassword = true;
   isValidUsername = true;
 
+
   constructor(private databaseService:DatabaseService, private router:Router){
 
   }
@@ -43,6 +44,61 @@ export class RegisterComponent {
     this.registerForm.get('password')?.valueChanges.subscribe(()=> this.checkPassword())
 
   }
+
+  subscribeToUsername(){
+     this.registerForm.get('username')?.valueChanges.subscribe((value:any)=> this.checkUsername(value))
+  }
+  checkUsername(value:any){
+    this.isValidUsername = true;
+    let users = JSON.parse(localStorage.getItem("users")?? "[]");
+    console.log(users);
+    for( let user of users){
+      if(user.username === value){
+        this.isValidUsername = false;
+        break;
+      }
+    }
+    
+  }
+
+    
+  checkPassword(){
+    this.isValidUsername = true
+   let password = this.registerForm.get('password')?.value;
+   let confirmPassword = this.registerForm.get('confirmPassword')?.value;
+
+   if(password !== confirmPassword){
+    this.isValidPassword=false
+   }
+   else
+   {
+    this.isValidPassword = true
+   }
+  }
+
+  submit(){
+    console.log(this.registerForm.value)
+    this.databaseService.userCounter++;
+    let users={
+      ...this.registerForm.value,
+      id: this.databaseService.userCounter,
+      activeYN:0
+    }
+    this.databaseService.users.push(users)
+
+    // Local storage needs key and value both as string..!
+    localStorage.setItem("users",JSON.stringify(this.databaseService.users))
+    this.registerForm.reset();
+    this.router.navigate(['/login'])
+  }
+
+
+
+
+
+
+
+  
 
   subscribeToUsername(){
      this.registerForm.get('username')?.valueChanges.subscribe((value:any)=> this.checkUsername(value))
