@@ -40,35 +40,40 @@ export class LoginComponent implements OnInit{
 
     
   }
-
   validateLogin() {
     const username = this.loginForm.get('username')?.value;
     const password = this.loginForm.get('password')?.value;
 
     let users = JSON.parse(localStorage.getItem("users") ?? "[]");
-    console.log(users)
-    for (let user of users) {
-      if (user.username !== username || user.password !== password) {
-
-        this.isValidLogin = false;
-        
-      }
-      else{
-        this.isValidLogin = true;
-        this.loggedInUserId=user.id
-        user.activeYN=1
-        break
-      }
+    console.log(users);
     
-    }
-      if(this.isValidLogin){
-        this.databaseService.loggedInUserId = this.loggedInUserId;
-        localStorage.setItem("loggedInUserId", this.loggedInUserId.toString())
-        console.log(this.databaseService.users)
-        localStorage.setItem("users",JSON.stringify(this.databaseService.users))
-        this.router.navigate([''])
-      }
+    // Initialize as not valid
+    this.isValidLogin = false;
 
-  }
+    for (let user of users) {
+      // Check for username and password match
+      if (user.username === username && user.password === password) {
+        // If a match is found, update activeYN and set isValidLogin to true
+        this.isValidLogin = true;
+        this.loggedInUserId = user.id;
+        user.activeYN = 1; // Update activeYN for the matched user
+        break; // Exit the loop since we found the user
+      }
+    }
+
+    // If a valid login was found, proceed to update local storage and navigate
+    if (this.isValidLogin) {
+      // Update the database service with the logged-in user's details
+      this.databaseService.loggedInUserId = this.loggedInUserId;
+      
+      // Save the updated users back to local storage
+      localStorage.setItem("users", JSON.stringify(users));
+
+      // Navigate to the main page or dashboard
+      this.router.navigate(['']);
+    } else {
+      console.log('Invalid login');
+    }
+}
 
 }

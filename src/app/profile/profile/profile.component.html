@@ -1,1 +1,49 @@
-<p>profile works!</p>
+<div class="profile-container" *ngFor="let user of users">
+    <div class="profile-header">
+      <h1>{{ user.name }}</h1>
+      <p class="bio">{{ user.bio }}</p>
+      <p class="email">{{ user.email }}</p>
+    </div>
+  
+    <div class="badges-container">
+      <h3>Badges:</h3>
+      <div class="badge-container">
+        <div
+          *ngFor="let badge of allBadges"
+          class="badge {{ badge.level }}"
+          [class.current-badge]="badge.name === currentBadge.name"
+          [class.disabled]="badge.name !== currentBadge.name"
+        >
+          {{ badge.name }} 
+          <span *ngIf="badge.name === currentBadge.name"> - Current Badge</span>
+        </div>
+      </div>
+    </div>
+  
+    <p>Total Questions: {{ userQuestionCount }}</p>
+  
+    <div class="content-tabs">
+      <button [class.active]="activeTab === 'questions'" (click)="setActiveTab('questions')">My Questions</button>
+      <button [class.active]="activeTab === 'answers'" (click)="setActiveTab('answers')">My Answers</button>
+    </div>
+  
+    <div class="content-area">
+      <ng-container *ngIf="activeTab === 'questions'">
+        <h3>My Questions</h3>
+        <ul>
+          <li *ngFor="let question of questions">
+            {{ question.title }}
+          </li>
+        </ul>
+      </ng-container>
+      <ng-container *ngIf="activeTab === 'answers'">
+        <h3>My Answers</h3>
+        <ul>
+          <li *ngFor="let answer of userAnswers">
+            {{ answer.content }}
+          </li>
+        </ul>
+      </ng-container>
+    </div>
+  </div>
+  

@@ -1,0 +1,87 @@
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-header h1 {
+    margin-bottom: 10px;
+  }
+  
+  .bio, .email {
+    margin: 5px 0;
+    color: #6a737c;
+  }
+  
+  .badges-container {
+    margin-bottom: 20px;
+  }
+  
+  .badge-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .badge {
+    padding: 8px 15px;
+    font-size: 13px;
+    border-radius: 5px;
+    display: inline-block;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  .badge.bronze {
+    background-color: #cd7f32;
+  }
+  
+  .badge.silver {
+    background-color: #c0c0c0;
+  }
+  
+  .badge.gold {
+    background-color: #ffd700;
+  }
+  
+  .current-badge {
+    border: 2px solid #dbdfe2;
+    font-weight: bold;
+  }
+  
+  .disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+  .content-tabs {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .content-tabs button {
+    flex: 1;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .content-tabs button.active {
+    background-color: #010911;
+    color: white;
+  }
+  
+  .content-area {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  

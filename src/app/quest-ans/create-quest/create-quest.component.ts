@@ -200,6 +200,7 @@
 //     return this.databaseService.tags.filter(tag => tag.selected).map(tag => tag.name);
 //   }
 // }
+
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Tags } from 'src/app/shared/interfaces/tags.interface';
@@ -212,12 +213,12 @@ import { DatabaseService } from 'src/app/shared/services/database.service';
 })
 export class CreateQuestComponent {
   // Initialize tags from the database service
-  tags:Tags[] = [];
 
   constructor(private databaseService: DatabaseService) {
     // Load the tags from the service
-    this.tags = this.databaseService.tags;
   }
+  tags = this.databaseService.tags;
+  
 
   createQuestForm = new FormGroup({
     questTitle: new FormControl('', Validators.required),
@@ -243,17 +244,30 @@ export class CreateQuestComponent {
       { name: "titleText", class: "titleText", tag: "h1" }
     ]
   };
+  generateDataModel(){
+    return{
+      id: ++this.databaseService.questionCount,
+      authorId: this.databaseService.loggedInUserId,
+      upVotes : 0,
+      downVotes : 0,
+      activeYN : 1,
+    }
+  }
 
   // On form submission
   onSubmit() {
+    console.log(this.tags)
     if (this.createQuestForm.valid) {
       const formValues = this.createQuestForm.value;
       const newQuestion = {
         title: formValues.questTitle,
         description: formValues.htmlContent,
-        tags: this.getSelectedTags() // Retrieve selected tags
+        tags: this.getSelectedTags(),
+        ...this.generateDataModel()
       };
 
+     
+console.log(newQuestion);
       this.databaseService.questions.push(newQuestion);
       localStorage.setItem('questions', JSON.stringify(this.databaseService.questions));
 
@@ -261,10 +275,13 @@ export class CreateQuestComponent {
     } else {
       console.error('Form is invalid');
     }
+    this.createQuestForm.reset();
+
+    
   }
 
   // Function to return the selected tags
-  getSelectedTags(): string[] {
+  getSelectedTags() {
     return this.tags.filter(tag => tag.selected).map(tag => tag.name);
   }
 
@@ -272,4 +289,6 @@ export class CreateQuestComponent {
   toggleTagSelection(tag: any) {
     tag.selected = !tag.selected; // Toggle the selected state
   }
+
+  
 }

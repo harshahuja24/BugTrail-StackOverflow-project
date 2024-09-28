@@ -11,6 +11,7 @@ export class DatabaseService {
   questions:any = JSON.parse(localStorage.getItem("questions") ?? "[]")
   users:any = JSON.parse(localStorage.getItem("users") ?? "[]")
   userCounter:number = this.users.length;
+  questionCount:number = this.questions.length
 
   loggedInUserId = localStorage.getItem("loggedInUserId") ?? "";
 
