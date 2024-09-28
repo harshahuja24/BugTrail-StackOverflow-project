@@ -8,6 +8,7 @@ import { HomeModule } from './home/home.module';
 import { ProfileModule } from './profile/profile.module';
 import { QuestAnsModule } from './quest-ans/quest-ans.module';
 import { SharedModule } from './shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SharedModule } from './shared/shared.module';
     HomeModule,
     ProfileModule,
     QuestAnsModule,
-    SharedModule
+    SharedModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
