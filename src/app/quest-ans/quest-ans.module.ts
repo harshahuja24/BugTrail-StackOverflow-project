@@ -5,6 +5,7 @@ import { ViewAllQuestComponent } from './view-all-quest/view-all-quest.component
 import { ViewSingleQuestComponent } from './view-single-quest/view-single-quest.component';
 import { VotingComponent } from './voting/voting.component';
 import { SearchComponent } from './search/search.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import { SearchComponent } from './search/search.component';
     SearchComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports:[
     CreateQuestComponent,

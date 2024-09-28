@@ -1,5 +1,5 @@
 export interface Tags{
     id : number,
     name : string,
-    subTag : []
+    subTag : string[]
 }
