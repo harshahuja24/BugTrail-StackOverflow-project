@@ -2,30 +2,24 @@
     <div>
       <label for="title">Question Title:</label>
       <input id="title" type="text" formControlName="questTitle" required>
-      <div *ngIf="createQuestForm.get('questTitle')?.invalid && createQuestForm.get('questTitle')?.touched">
-        <small>Title is required.</small>
-      </div>
     </div>
   
     <div>
       <label>Quest Description:</label>
       <angular-editor formControlName="htmlContent" [config]="config"></angular-editor>
-      <div *ngIf="createQuestForm.get('htmlContent')?.invalid && createQuestForm.get('htmlContent')?.touched">
-        <small>Description is required.</small>
-      </div>
     </div>
   
     <div>
       <label>Quest Tags:</label>
-      <div>
-        <label *ngFor="let tag of tags; let i = index">
-          <input type="checkbox" [(ngModel)]="tag.selected" [name]="'tag' + i">
-          <h5>{{ tag.name }}</h5>
+      <div *ngFor="let tag of tags; let i = index">
+        <label>
+          <input type="checkbox" [checked]="tag.selected" (change)="toggleTagSelection(tag)">
+          {{ tag.name }}
         </label>
       </div>
     </div>
   
-    <button type="submit" [disabled]="createQuestForm.invalid">Create Question</button>
+    <button type="submit">Create Question</button>
   </form>
   
   <h5>Quest Preview:</h5>
