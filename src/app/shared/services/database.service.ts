@@ -10,6 +10,13 @@ export class DatabaseService {
 
   questions:any = JSON.parse(localStorage.getItem("questions") ?? "[]")
 
+  users:any = JSON.parse(localStorage.getItem("users") ?? "[]")
+  userCounter:number = this.users.length;
+
+  loggedInUserId = localStorage.getItem("loggedInUserId") ?? "";
+
+  questDetails = localStorage.getItem("lo")
+
   tags:Tags[] = [
     {
       id:1,
@@ -32,4 +39,6 @@ export class DatabaseService {
       selected: false
     },
   ]
+  questionCount =  this.questions.length
+
 }
