@@ -200,6 +200,8 @@
 //     return this.databaseService.tags.filter(tag => tag.selected).map(tag => tag.name);
 //   }
 // }
+
+
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Tags } from 'src/app/shared/interfaces/tags.interface';
@@ -222,6 +224,8 @@ export class CreateQuestComponent {
   createQuestForm = new FormGroup({
     questTitle: new FormControl('', Validators.required),
     htmlContent: new FormControl(''),
+    codeLanguage: new FormControl('javascript'),
+    codeSnippet: new FormControl(''),
     tags: new FormControl([]) // This will hold the selected tag values
   });
 
@@ -246,12 +250,14 @@ export class CreateQuestComponent {
 
   generateDataModel(){
 
+    console.log(this.databaseService.loggedInUserId)
+
     return{
-      id:++this.databaseService.questionCount,
+    id:++this.databaseService.questionCount,
     authorId: this.databaseService.loggedInUserId,
-    noOfLikes:0,
+    upVote:0,
+    downVote:0,
     activeYN:1,
-    ...this.createQuestForm.value
 
     }
     
@@ -259,40 +265,33 @@ export class CreateQuestComponent {
 
   // On form submission
   onSubmit() {
-    console.log(this.tags)
     if (this.createQuestForm.valid) {
       const formValues = this.createQuestForm.value;
+      const codeBlock = formValues.codeSnippet ? 
+        `\n\`\`\`${formValues.codeLanguage}\n${formValues.codeSnippet}\n\`\`\`\n` : '';
+      
       const newQuestion = {
         title: formValues.questTitle,
-        description: formValues.htmlContent,
+        description: formValues.htmlContent + codeBlock,
         tags: this.getSelectedTags(),
         ...this.generateDataModel()
       };
 
-
-     
-console.log(newQuestion);
       this.databaseService.questions.push(newQuestion);
       localStorage.setItem('questions', JSON.stringify(this.databaseService.questions));
 
       console.log('Question created and saved:', newQuestion);
+      this.createQuestForm.reset();
     } else {
       console.error('Form is invalid');
     }
-    this.createQuestForm.reset();
-
-    
   }
 
-  // Function to return the selected tags
   getSelectedTags() {
     return this.tags.filter(tag => tag.selected).map(tag => tag.name);
   }
 
-  // Toggle the tag selection
   toggleTagSelection(tag: any) {
-    tag.selected = !tag.selected; // Toggle the selected state
+    tag.selected = !tag.selected;
   }
-
-  
 }

@@ -2,5 +2,7 @@ export interface Answer{
     id:number,
     qid : number,
     uid : number,
-    description : string
+    description : string,
+    score: number,
+    date:Date
 }

@@ -65,6 +65,7 @@ export class LoginComponent {
     if (this.isValidLogin) {
       // Update the database service with the logged-in user's details
       this.databaseService.loggedInUserId = this.loggedInUserId;
+      localStorage.setItem("loggedInUserId",JSON.stringify(this.databaseService.loggedInUserId))
       
       // Save the updated users back to local storage
       localStorage.setItem("users", JSON.stringify(users));

@@ -46,7 +46,7 @@
 
 <angular-editor formControlName="htmlContent" [config]="config"></angular-editor> -->
 
-<form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
     <div>
      <label>Quest Description:</label>
      <angular-editor formControlName="htmlContent" [config]="config"></angular-editor>
@@ -55,4 +55,60 @@
      <button type="submit">Create Question</button>
  </form>
 
-<button class="p-2 m-3 border rounded-3">Submit Answer</button>
+<button class="p-2 m-3 border rounded-3">Submit Answer</button> -->
+<div class="question-container">
+    <div class="question-title">
+      <h1>{{ question.title }}</h1>
+    </div>
+    
+    <div class="question-meta">
+      <span>Posted by User{{ question.uid }} on {{ question.date | date: 'longDate' }}</span>
+      <span>Last updated on {{ question.updatedAt | date: 'longDate' }}</span>
+    </div>
+  
+    <div class="question-body">
+      <p [innerHTML]="question.description"></p>
+    </div>
+  
+    <!-- Vote for Question -->
+    <div class="vote">
+      <button (click)="upvote(question)">Upvote</button>
+      <button (click)="downvote(question)">Downvote</button>
+      <span>Score: {{ question.score }}</span>
+    </div>
+     <!-- Answer Submission Form -->
+  <div class="answer-form">
+    <form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
+      <label for="answer">Your Answer:</label>
+      <angular-editor formControlName="htmlContent" [config]="config"></angular-editor>
+      <button type="submit">Submit Answer</button>
+    </form>
+  </div>
+  
+  <!-- List of Answers -->
+  <div class="answers-section">
+    <h2>{{ answers.length }} Answers</h2>
+    <div *ngFor="let answer of answers" class="answer-container">
+      <div class="answer-meta">
+        <span>Answered by User{{ answer.uid }} on {{ answer.date | date: 'longDate' }}</span>
+      </div>
+  
+      <div class="answer-body">
+        <p [innerHTML]="answer.description"></p>
+      </div>
+  
+      <div class="vote">
+        <button (click)="upvote(answer)">Upvote</button>
+        <button (click)="downvote(answer)">Downvote</button>
+        <span>Score: {{ answer.score }}</span>
+      </div>
+  
+      <button (click)="markBestAnswer(answer)" [disabled]="answer.isBest">
+        {{ answer.isBest ? 'Best Answer' : 'Mark as Best Answer' }}
+      </button>
+    </div>
+  </div>
+ 
+  </div>
+  
+  

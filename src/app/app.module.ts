@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule} from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +25,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ProfileModule,
     QuestAnsModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

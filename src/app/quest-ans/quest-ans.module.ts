@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
+
 @NgModule({
   declarations: [
     CreateQuestComponent,
@@ -26,7 +27,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
      FormsModule,
       AngularEditorModule,
        HttpClientModule,
-       ReactiveFormsModule
+       ReactiveFormsModule,
+
   ],
   exports:[
     CreateQuestComponent,

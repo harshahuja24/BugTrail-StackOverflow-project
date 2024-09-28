@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -89,3 +89,118 @@ footer {
     text-align: center;
     margin-top: 2rem;
 }
+.question-container {
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .vote {
+    margin-top: 10px;
+  }
+  
+  .answer-container {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .answer-form {
+    margin-top: 30px;
+  }
+  
+  .answer-details, .answer-body {
+    margin-bottom: 10px;
+  }
+   */
+
+   body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  .question-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .question-title h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .question-meta {
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+  }
+  
+  .question-body {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-left: 5px solid #3498db;
+  }
+  
+  .vote button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+  }
+  
+  .vote button:hover {
+    background-color: #2980b9;
+  }
+  
+  .vote span {
+    font-weight: bold;
+  }
+  
+  .answer-form {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .answer-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .answer-meta {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+  }
+  
+  .answer-body {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-left: 5px solid #3498db;
+    margin-bottom: 1rem;
+  }
+  
+  button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .answers-section h2 {
+    margin-top: 20px;
+  }
+  

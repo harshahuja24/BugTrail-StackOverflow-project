@@ -10,14 +10,14 @@ export class ViewAllQuestComponent {
 
   constructor(private databaseService : DatabaseService){}
 
-  
+  questions:any = []
   ngOnInit(){
+
+     this.questions = this.databaseService.questions
+
    
   }
-   questions = this.databaseService.questions
   
-   description = this.databaseService.questions.description
-
    
 
 
