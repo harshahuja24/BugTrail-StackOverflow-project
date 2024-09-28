@@ -3,6 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
+import { HomeModule } from './home/home.module';
+import { ProfileModule } from './profile/profile.module';
+import { QuestAnsModule } from './quest-ans/quest-ans.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +15,12 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule,
+    HomeModule,
+    ProfileModule,
+    QuestAnsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

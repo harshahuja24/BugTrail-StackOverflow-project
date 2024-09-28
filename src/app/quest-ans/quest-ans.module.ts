@@ -18,6 +18,13 @@ import { SearchComponent } from './search/search.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    CreateQuestComponent,
+    ViewAllQuestComponent,
+    ViewSingleQuestComponent,
+    VotingComponent,
+    SearchComponent 
   ]
 })
 export class QuestAnsModule { }
