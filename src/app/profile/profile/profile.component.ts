@@ -8,17 +8,14 @@ import { DatabaseService } from 'src/app/shared/services/database.service';
 })
 export class ProfileComponent implements OnInit {
   activeTab: 'questions' | 'answers' = 'questions';
-  loggedInUserId: any;
   user: any;
-  userQuestionCount: number = 0;
-  questions: any[] = [];
-  userAnswers: any[] = [];
-  users: any = this.databaseService.users;
+  allQuestions: any[] = [];
+  answeredQuestions: any[] = [];
 
   allBadges: any = [
     { name: 'Fresher', level: 'bronze', threshold: 0 },
-    { name: 'Intermediate', level: 'silver', threshold: 3 },
-    { name: 'Expert', level: 'gold', threshold: 6 }
+    { name: 'Intermediate', level: 'silver', threshold: 5 },
+    { name: 'Expert', level: 'gold', threshold: 10 }
   ];
   currentBadge: any;
 
@@ -26,39 +23,40 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.databaseService.users.find(
-      (user: any) => user.id === this.databaseService.loggedInUserId
+      (user: any) => this.compareIds(user.id, this.databaseService.loggedInUserId)
     );
-    this.countUserQuestions();
+    this.getAllQuestions();
+    this.getAnsweredQuestions();
     this.assignBadge();
-    this.getUserQuestions();
-    this.getUserAnswers();
   }
 
-  countUserQuestions(): void {
-    this.userQuestionCount = this.databaseService.questions.filter(
-      (question: any) => question.authorId === this.databaseService.loggedInUserId
-    ).length;
+  compareIds(id1: string | number, id2: string | number): boolean {
+    return String(id1) === String(id2);
+  }
+
+  getAllQuestions(): void {
+    this.allQuestions = this.databaseService.questions;
+  }
+
+  getAnsweredQuestions(): void {
+    const userAnswers = this.databaseService.answers.filter(
+      (answer: any) => this.compareIds(answer.uid, this.databaseService.loggedInUserId)
+    );
+    
+    this.answeredQuestions = this.databaseService.questions.filter(
+      (question: any) => userAnswers.some((answer: any) => this.compareIds(answer.qid, question.id))
+    );
   }
 
   assignBadge(): void {
+    const totalContributions = this.allQuestions.length + this.answeredQuestions.length;
     this.currentBadge = this.allBadges.reduce(
       (prev: { threshold: number }, curr: { threshold: number }) =>
-        this.userQuestionCount >= curr.threshold && curr.threshold > prev.threshold
+        totalContributions >= curr.threshold && curr.threshold > prev.threshold
           ? curr
           : prev,
-      this.allBadges[0] // Starting with the lowest badge
+      this.allBadges[0]
     );
-  }
-
-  getUserQuestions(): void {
-    this.questions = this.databaseService.questions.filter(
-      (question: any) => question.authorId === this.databaseService.loggedInUserId
-    );
-  }
-
-  getUserAnswers(): void {
-    // Assuming answers are stored in questions array
-    console.log("AYYA ANS")
   }
 
   setActiveTab(tab: 'questions' | 'answers'): void {

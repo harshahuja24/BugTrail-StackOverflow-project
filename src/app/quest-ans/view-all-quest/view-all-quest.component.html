@@ -1,32 +1,41 @@
-<div class="questions-container" *ngFor="let question of questions">
-    <div class="question-summary">
-        <div class="question-stats">
-            <div class="votes">
-                <span class="vote-count">12</span>
-                <span class="vote-text">votes</span>
-            </div>
-            <div class="answers">
-                <span class="answer-count">3</span>
-                <span class="answer-text">answers</span>
-            </div>
-            <div class="views">
-                <span class="view-count">20</span>
-                <span class="view-text">views</span>
-            </div>
-        </div>
+<!-- Search bar component -->
+<app-search class="search-container"></app-search>
 
-        <div class="question-details">
-            <h3 class="question-title"><a [routerLink]="['/single',question.id]">{{question.title}} </a></h3>
-            <div class="question-meta">
-                <span class="tags"><a href="#" class="tag">{{question.tags}}</a>
-                    asked by <a href="#" class="user-name">JohnDoe</a> <span class="time-ago">2 hours ago</span>
-                </span>                
-            </div>
-            
-<div>
-    
-        <div [innerHTML]="question.description"></div>
-      
+<!-- Display cards only if there are filtered questions -->
+<div class="questions-container" *ngIf="searchComponent?.filteredQuestions?.length">
+  <!-- Loop through each filtered question and display as a card -->
+  <div class="question-summary" *ngFor="let question of searchComponent.filteredQuestions">
+    <div class="question-stats">
+      <div class="votes">
+        <span class="vote-count">{{ question.votes || 0 }}</span>
+        <span class="vote-text">votes</span>
+      </div>
+      <div class="answers">
+        <span class="answer-count">{{ question.answers || 0 }}</span>
+        <span class="answer-text">answers</span>
+      </div>
+      <div class="views">
+        <span class="view-count">{{ question.views || 0 }}</span>
+        <span class="view-text">views</span>
+      </div>
+    </div>
 
-    
+    <div class="question-details" >
+      <h3 class="question-title">
+        <a [routerLink]="['/single', question.id]">{{ question.title }}</a>
+      </h3>
+      <div class="question-meta" >
+        <span class="tags">
+          <a href="#" class="tag">{{ question.tags }}</a>
+          asked by <a href="#" class="user-name">{{ question.user }}</a>
+          <span class="time-ago">{{ question.timeAgo }}</span>
+        </span>
+      </div>
+
+      <div class="description" [innerHTML]="question.description"></div>
+    </div>
+  </div>
 </div>
+
+<!-- Message for no search results -->
+<p *ngIf="searchComponent?.filteredQuestions?.length === 0">No questions found.</p>

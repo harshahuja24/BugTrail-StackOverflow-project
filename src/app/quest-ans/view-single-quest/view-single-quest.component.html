@@ -1,71 +1,51 @@
-<div class="question-container ">
+<div class="question-container">
   <div class="question-title">
-    <h1>{{ question.title }}</h1>
+      <h1>{{ question.title }}</h1>
   </div>
 
   <div class="question-meta">
-    <span>Posted by User{{ question.uid }} on {{ question.date | date: 'longDate' }}</span>
-    <span>Last updated on {{ question.updatedAt | date: 'longDate' }}</span>
+      <span>Posted by User{{ question.uid }} on {{ question.date | date: 'longDate' }}</span>
+      <span>Last updated on {{ question.updatedAt | date: 'longDate' }}</span>
   </div>
 
-  <div class="d-flex justify-content-space-between">
-    <div class="img">
-      
-      <button class="fs-5 border rounded-5" (click)="voteUp(question)">
-        <img src="assets/up-arrow-key.png" alt="Upvote">
-      </button>
-      <br>
-      <span>{{ question.voteCount || 0 }}</span> 
-      <br>
-      <button class="fs-5 border rounded-5" (click)="voteDown(question)" [disabled]="question.voteCount === 0">
-        <img src="assets/downwards-arrow-key.png" alt="Downvote">
-      </button>
-    </div>
-
-    <div class="question-body mx-3 d-flex justify-content-center align-items-center">
+  <div class="question-body">
       <p [innerHTML]="question.description"></p>
-    </div>
   </div>
-  <div class="answer-form">
-    <form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
+<div class="answer-form">
+  <form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
       <label for="answer">Your Answer:</label>
       <angular-editor formControlName="htmlContent" [config]="config"></angular-editor>
       <button type="submit">Submit Answer</button>
-    </form>
-  </div>
-  
+  </form>
+</div>
 
- 
-  <div class="answers-section">
-    <h2>{{ answers.length }} Answers</h2>
-    <div *ngFor="let answer of answers" class="answer-container">
+<div class="answers-section">
+  <h2>{{ answers.length }} Answers</h2>
+  <div *ngFor="let answer of answers" class="answer-container">
       <div class="answer-meta">
-        <span>Answered by User{{ answer.uid }} on {{ answer.date | date: 'longDate' }}</span>
+          <span>Answered by User{{ answer.uid }} on {{ answer.date | date: 'longDate' }}</span>
       </div>
 
       <div class="answer-body">
-        <p [innerHTML]="answer.description"></p>
+          <p [innerHTML]="answer.description"></p>
       </div>
 
       <div class="img">
-        
-        <button class="fs-5 border rounded-5" (click)="voteUp(answer)">
-          <img src="assets/up-arrow-key.png" alt="Upvote">
-        </button>
-        <br>
-        <span>{{ answer.voteCount || 0 }}</span> 
-        <br>
-        <button class="fs-5 border rounded-5" (click)="voteDown(answer)">
-          <img src="assets/downwards-arrow-key.png" alt="Downvote">
-        </button>
+          <button class="fs-5 border rounded-5" (click)="voteUp(answer)">
+              <img src="assets/up-arrow-key.png" alt="Upvote">
+          </button>
+          <br>
+          <span>{{ answer.voteCount || 0 }}</span>
+          <br>
+          <button class="fs-5 border rounded-5" (click)="voteDown(answer)">
+              <img src="assets/downwards-arrow-key.png" alt="Downvote">
+          </button>
       </div>
 
       <button (click)="markBestAnswer(answer)" [disabled]="answer.isBest">
-        {{ answer.isBest ? 'Best Answer' : 'Mark as Best Answer' }}
+          {{ answer.isBest ? 'Best Answer' : 'Mark as Best Answer' }}
       </button>
-    </div>
   </div>
 </div>
-<angular-editor formControlName="htmlContent" [config]="config"></angular-editor>
+</div>
 
-<button type="submit" class="m-3 border rounded-5">Submit Button</button>

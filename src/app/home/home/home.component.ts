@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  contact = {
+    name: '',
+    email: '',
+    message: ''
+  };
+
+  onSubmit() {
+    console.log('Form submitted!', this.contact);
+    // Perform further actions, like sending to backend
+  }
+
 }

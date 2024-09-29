@@ -22,15 +22,19 @@ export class ViewSingleQuestComponent {
     // Get the question ID from the ActivatedRoute
     this.activatedRoute.params.subscribe(params => {
       this.activated_id = params['id'];
-
+  
       // Fetch the question details using the question ID
       this.question = this.databaseService.questions.find((q: any) => q.id == this.activated_id);
-
-      // Fetch the answers related to the question
+      
+      
+      if (this.question.voteCount === undefined) {
+        this.question.voteCount = 0;
+      }
+  
       this.answers = this.databaseService.answers.filter((ans: any) => ans.qid == this.activated_id);
     });
   }
-  // answers = this.databaseService.answers
+  
 
   answerForm = new FormGroup({
     htmlContent: new FormControl(''),
@@ -77,7 +81,6 @@ export class ViewSingleQuestComponent {
   }
 
  
-
   voteUp(item: any) {
     if (item.voteCount === undefined) {
       item.voteCount = 0;
@@ -91,6 +94,7 @@ export class ViewSingleQuestComponent {
     }
     item.voteCount--;  
   }
+  
   
  
 

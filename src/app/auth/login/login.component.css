@@ -2,34 +2,24 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    color: #fbfbfd; /* Updated */
+    color: #fbfbfd; /* Light background color */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80vh;
 }
 
-
 .login-container {
-    background-color: #b69cff; /* Updated to a dark blue */
+    background-color: #8b66e8; /* Light purple background */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 20vw;
+    width: 320px;
     text-align: center;
-}
-.login-form h2{
-
-    color: #fff !important;
-
-}
-.login-form {
-    display: flex;
-    flex-direction: column;
 }
 
 .login-form h2 {
-
+    color: #fff;
     margin-bottom: 1rem;
 }
 
@@ -38,7 +28,7 @@
 }
 
 .form-group label {
-    color: hsl(240, 4%, 95%); /* Updated to match footer link color */
+    color: #ebeef5;
     display: block;
     margin-bottom: 0.5rem;
 }
@@ -49,13 +39,13 @@
     border: none;
     border-radius: 0.25rem;
     outline: none;
-    background-color: #ebeef5; /* Added background to input */
+    background-color: #ebeef5;
 }
 
 .btn {
-    padding: 0.5rem 1rem;
-    background-color: #5e2ced; /* Updated to match button color */
-    color: #fff; 
+    padding: 0.75rem 1rem;
+    background-color: #5e2ced;
+    color: #fff;
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
@@ -64,11 +54,11 @@
 }
 
 .btn:hover {
-    background-color: #ffff; /* Updated hover effect */
-    color: #6754e2;
+    background-color: #fff;
+    color: #5e2ced;
 }
 
-a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
-    text-decoration: none;
-    outline: none;
+.text-danger {
+    color: red;
+    margin-top: 0.5rem;
 }

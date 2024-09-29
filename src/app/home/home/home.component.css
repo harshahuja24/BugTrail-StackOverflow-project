@@ -1,0 +1,133 @@
+body {
+    background: #fbfbfd; /* Light background */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #e3d7f7; /* Soft lavender background */
+    color: #4b2e91; /* Dark purple text */
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+}
+
+.hero-section .btn {
+    background-color: #8b66e8; /* Light purple button */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.3s ease-in-out;
+}
+
+.hero-section .btn:hover {
+    background-color: #5e2ced; /* Slightly darker on hover */
+}
+
+/* Card Section */
+.cards-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cards-section h2 {
+    color: #4b2e91; /* Dark purple for headings */
+    margin-bottom: 40px;
+}
+
+.card {
+    display: inline-block;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: rgba(23, 31, 114, 0.1) 0px 16px 30px; /* Light shadow */
+}
+
+.card h3 {
+    color: #4b2e91; /* Dark purple for card headings */
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #8a9ca0; /* Soft grayish-blue for text */
+}
+
+/* Testimonials */
+.testimonial-section {
+    background-color: #f9f9fc; /* Very light gray background */
+    padding: 80px 0;
+    text-align: center;
+}
+
+.testimonial-section h2 {
+    color: #4b2e91; /* Dark purple for headings */
+    margin-bottom: 40px;
+}
+
+.testimonial {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(23, 31, 114, 0.1) 0px 16px 30px; /* Light shadow */
+}
+
+.testimonial p {
+    color: #8a9ca0; /* Soft grayish-blue for text */
+}
+
+/* Contact Form */
+.contact-form {
+    background-color: #f9f9fc; /* Very light gray background */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.contact-form h2 {
+    color: #4b2e91; /* Dark purple for headings */
+    margin-bottom: 20px;
+}
+
+.contact-form form {
+    display: inline-block;
+    max-width: 400px;
+    width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e2e2eb;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.contact-form button {
+    background-color: #8b66e8; /* Light purple button */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #5e2ced; /* Slightly darker on hover */
+}

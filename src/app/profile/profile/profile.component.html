@@ -1,49 +1,93 @@
-<div class="profile-container" *ngFor="let user of users">
-    <div class="profile-header">
-      <h1>{{ user.name }}</h1>
-      <p class="bio">{{ user.bio }}</p>
-      <p class="email">{{ user.email }}</p>
-    </div>
-  
-    <div class="badges-container">
-      <h3>Badges:</h3>
-      <div class="badge-container">
-        <div
-          *ngFor="let badge of allBadges"
-          class="badge {{ badge.level }}"
-          [class.current-badge]="badge.name === currentBadge.name"
-          [class.disabled]="badge.name !== currentBadge.name"
-        >
-          {{ badge.name }} 
-          <span *ngIf="badge.name === currentBadge.name"> - Current Badge</span>
-        </div>
-      </div>
-    </div>
-  
-    <p>Total Questions: {{ userQuestionCount }}</p>
-  
-    <div class="content-tabs">
-      <button [class.active]="activeTab === 'questions'" (click)="setActiveTab('questions')">My Questions</button>
-      <button [class.active]="activeTab === 'answers'" (click)="setActiveTab('answers')">My Answers</button>
-    </div>
-  
-    <div class="content-area">
-      <ng-container *ngIf="activeTab === 'questions'">
-        <h3>My Questions</h3>
-        <ul>
-          <li *ngFor="let question of questions">
-            {{ question.title }}
-          </li>
-        </ul>
-      </ng-container>
-      <ng-container *ngIf="activeTab === 'answers'">
-        <h3>My Answers</h3>
-        <ul>
-          <li *ngFor="let answer of userAnswers">
-            {{ answer.content }}
-          </li>
-        </ul>
-      </ng-container>
+<div class="profile-container" *ngIf="user">
+  <div class="profile-header">
+    <h1>{{ user.name }}</h1>
+    <p class="bio">{{ user.bio || 'No bio available' }}</p>
+    <p class="email">{{ user.email }}</p>
+  </div>
+
+  <div class="badges-container">
+    <h3>Current Badge:</h3>
+    <div class="badge {{ currentBadge.level }}">
+      {{ currentBadge.name }}
     </div>
   </div>
-  
+
+  <div class="stats-container">
+    <div class="stat-item">
+      <span class="stat-value">{{ allQuestions.length }}</span>
+      <span class="stat-label">Questions</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">{{ answeredQuestions.length }}</span>
+      <span class="stat-label">Answers</span>
+    </div>
+  </div>
+
+  <div class="content-tabs">
+    <button [class.active]="activeTab === 'questions'" (click)="setActiveTab('questions')">My Questions</button>
+    <button [class.active]="activeTab === 'answers'" (click)="setActiveTab('answers')">My Answers</button>
+  </div>
+
+  <div class="content-area">
+    <ng-container *ngIf="activeTab === 'questions'">
+      <h3>All Questions</h3>
+      <div class="questions-container">
+        <div class="question-summary" *ngFor="let question of allQuestions">
+          <div class="question-stats">
+            <div class="votes">
+              <span class="vote-count">{{ question.score || 0 }}</span>
+              <span class="vote-text">votes</span>
+            </div>
+            <div class="answers">
+              <span class="answer-count">{{ question.answers?.length || 0 }}</span>
+              <span class="answer-text">answers</span>
+            </div>
+          </div>
+          <div class="question-details">
+            <h3 class="question-title">
+              <a [routerLink]="['/single', question.id]">{{ question.title }}</a>
+            </h3>
+            <div class="question-meta">
+              <span class="tags">
+                <!-- No need to split, just iterate over the array directly -->
+                <a href="#" class="tag" *ngFor="let tag of question.tags">{{ tag }}</a>
+              </span>
+              <span class="time-ago">asked {{ question.date | date }}</span>
+            </div>
+            <div class="description" [innerHTML]="question.description"></div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="activeTab === 'answers'">
+      <h3>My Answered Question's</h3>
+      <div class="questions-container">
+        <div class="question-summary" *ngFor="let question of answeredQuestions">
+          <div class="question-stats">
+            <div class="votes">
+              <span class="vote-count">{{ question.score || 0 }}</span>
+              <span class="vote-text">votes</span>
+            </div>
+            <div class="answers">
+              <span class="answer-count">{{ question.answers?.length || 0 }}</span>
+              <span class="answer-text">answers</span>
+            </div>
+          </div>
+          <div class="question-details">
+            <h3 class="question-title">
+              <a [routerLink]="['/single', question.id]">{{ question.title }}</a>
+            </h3>
+            <div class="question-meta">
+              <span class="tags">
+                <a href="#" class="tag" *ngFor="let tag of question.tags">{{ tag }}</a>
+              </span>
+              <span class="time-ago">asked {{ question.date | date }}</span>
+            </div>
+            <div class="description" [innerHTML]="question.description"></div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

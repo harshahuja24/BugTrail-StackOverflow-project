@@ -1,0 +1,31 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .search-container input {
+    width: 500px;
+    padding: 10px 20px;
+    border: 2px solid hsl(212, 100%, 88%);
+    border-radius: 30px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .search-container input::placeholder {
+    color: #aaa;
+  }
+  
+  .search-container input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+  }
+  
+  .search-container input:hover {
+    border-color: #007bff;
+  }
+  

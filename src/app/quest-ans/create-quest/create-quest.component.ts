@@ -204,6 +204,7 @@
 
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Tags } from 'src/app/shared/interfaces/tags.interface';
 import { DatabaseService } from 'src/app/shared/services/database.service';
 
@@ -215,7 +216,7 @@ import { DatabaseService } from 'src/app/shared/services/database.service';
 export class CreateQuestComponent {
   // Initialize tags from the database service
 
-  constructor(private databaseService: DatabaseService) {
+  constructor(private databaseService: DatabaseService, private router:Router) {
     // Load the tags from the service
   }
   tags = this.databaseService.tags;
@@ -282,6 +283,7 @@ export class CreateQuestComponent {
 
       console.log('Question created and saved:', newQuestion);
       this.createQuestForm.reset();
+      this.router.navigate(['/all'])
     } else {
       console.error('Form is invalid');
     }
