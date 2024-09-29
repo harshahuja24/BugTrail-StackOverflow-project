@@ -13,6 +13,8 @@ export class ViewSingleQuestComponent {
   answers: any[] = []; // Array to store answers for the current question
   question: any = {};  // Object to store the current question's details
   questions = this.databaseService.questions;
+  downVote: any;
+  
 
   constructor(private databaseService: DatabaseService, private activatedRoute: ActivatedRoute) {}
 
@@ -28,6 +30,7 @@ export class ViewSingleQuestComponent {
       this.answers = this.databaseService.answers.filter((ans: any) => ans.qid == this.activated_id);
     });
   }
+  // answers = this.databaseService.answers
 
   answerForm = new FormGroup({
     htmlContent: new FormControl(''),
@@ -62,10 +65,10 @@ export class ViewSingleQuestComponent {
       upVote: 0,
       downVote:0, // Initialize votes
       date: new Date(),
-      isBest: false // Track best answer
+      isBest: false 
     };
 
-    // Save the new answer
+
     this.databaseService.answers.push(newAns);
     localStorage.setItem("answers", JSON.stringify(this.databaseService.answers));
 
@@ -73,13 +76,23 @@ export class ViewSingleQuestComponent {
     this.answers = this.databaseService.answers.filter((ans: any) => ans.qid == this.activated_id);
   }
 
-  upvote(item: any) {
-    item.upvote++;
-  }
+ 
 
-  downvote(item: any) {
-    item.downVote++;
+  voteUp(item: any) {
+    if (item.voteCount === undefined) {
+      item.voteCount = 0;
+    }
+    item.voteCount++;  
   }
+  
+  voteDown(item: any) {
+    if (item.voteCount === undefined) {
+      item.voteCount = 0;
+    }
+    item.voteCount--;  
+  }
+  
+ 
 
   markBestAnswer(answer: any) {
     this.databaseService.answers.forEach((ans: any) => {
@@ -87,4 +100,5 @@ export class ViewSingleQuestComponent {
     });
     answer.isBest = true;
   }
+
 }
