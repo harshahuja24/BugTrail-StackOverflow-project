@@ -1,44 +1,4 @@
-<!-- <form [formGroup]="createQuestForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="title">Question Title:</label>
-      <input id="title" type="text" formControlName="questTitle" required>
-    </div>
-  
-    <div>
-      <label>Quest Description:</label>
-      <angular-editor formControlName="htmlContent" [config]="config"></angular-editor>
-    </div>
-  
-    <div>
-      <label>Quest Tags:</label>
-      <div *ngFor="let tag of tags">
-        <label>
-          <input type="checkbox" [checked]="tag.selected" (change)="toggleTagSelection(tag)">
-          {{ tag.name }}
-        </label>
-      </div>
-    </div>
-  
-    <button type="submit">Create Question</button>
-  </form>
-   -->
-  <!-- <h5>Quest Preview:</h5>
-  <div>
-    <h3>{{ createQuestForm.get('questTitle')?.value }}</h3>
-    <div [innerHTML]="createQuestForm.get('htmlContent')?.value"></div>
-    <p>Tags: {{ getSelectedTags() }}</p>
-  </div> -->
-  
-
-
-
-
-
-
-
-
-
-  <form [formGroup]="createQuestForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="createQuestForm" (ngSubmit)="onSubmit()">
     <div>
       <label for="title">Question Title:</label>
       <input id="title" type="text" formControlName="questTitle" required>

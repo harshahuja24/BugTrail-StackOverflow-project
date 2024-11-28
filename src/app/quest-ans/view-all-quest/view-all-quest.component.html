@@ -2,9 +2,11 @@
 <app-search class="search-container"></app-search>
 
 <!-- Display cards only if there are filtered questions -->
-<div class="questions-container" *ngIf="searchComponent?.filteredQuestions?.length">
-  <!-- Loop through each filtered question and display as a card -->
-  <div class="question-summary" *ngFor="let question of searchComponent.filteredQuestions">
+
+<div *ngIf="searchComponent?.filteredQuestions?.length">
+  <div  *ngFor="let question of searchComponent.filteredQuestions">
+  <div class="questions-container" *ngIf="question.activeYN === 1">
+  <div class="question-summary" >
     <div class="question-stats">
       <div class="votes">
         <span class="vote-count">{{ question.votes || 0 }}</span>
@@ -36,6 +38,10 @@
     </div>
   </div>
 </div>
+  </div>
+
+</div>
+
 
 <!-- Message for no search results -->
 <p *ngIf="searchComponent?.filteredQuestions?.length === 0">No questions found.</p>
