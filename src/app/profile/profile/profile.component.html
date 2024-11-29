@@ -26,14 +26,15 @@
   <div class="content-tabs">
     <button [class.active]="activeTab === 'questions'" (click)="setActiveTab('questions')">My Questions</button>
     <button [class.active]="activeTab === 'answers'" (click)="setActiveTab('answers')">My Answers</button>
+    <button [class.active]="activeTab === 'archive'" (click)="setActiveTab('archive')">My archive</button>
   </div>
 
   <div class="content-area">
     <ng-container *ngIf="activeTab === 'questions'">
       <h3>All Questions</h3>
-      <div class="questions-container">
-        <div class="question-summary" *ngFor="let question of allQuestions">
-          <div class="question-stats">
+      <div class="questions-container" *ngFor="let question of allQuestions">
+        <div class="question-summary" *ngIf="question.activeYN === 1" >
+            <div class="question-stats">      
             <div class="votes">
               <span class="vote-count">{{ question.score || 0 }}</span>
               <span class="vote-text">votes</span>
@@ -43,9 +44,10 @@
               <span class="answer-text">answers</span>
             </div>
           </div>
-          <div class="question-details">
-            <h3 class="question-title">
+          <div class="question-details"  >
+            <h3 class="question-title" style="display: flex; justify-content: space-between;">
               <a [routerLink]="['/single', question.id]">{{ question.title }}</a>
+              <button style="border: none; background-color: inherit;" (click)="archive(question.id)"><i class="fa-solid fa-box-archive" style="font-size: smaller;"></i></button>
             </h3>
             <div class="question-meta">
               <span class="tags">
@@ -56,6 +58,8 @@
             </div>
             <div class="description" [innerHTML]="question.description"></div>
           </div>
+          
+          
         </div>
       </div>
     </ng-container>
@@ -89,5 +93,39 @@
         </div>
       </div>
     </ng-container>
+
+    <ng-container *ngIf="activeTab === 'archive'" >
+      <div class="questions-container" *ngFor="let question of allQuestions">
+        <div class="question-summary" *ngIf="question.activeYN === 0" >
+            <div class="question-stats">      
+            <div class="votes">
+              <span class="vote-count">{{ question.score || 0 }}</span>
+              <span class="vote-text">votes</span>
+            </div>
+            <div class="answers">
+              <span class="answer-count">{{ question.answers?.length || 0 }}</span>
+              <span class="answer-text">answers</span>
+            </div>
+          </div>
+          <div class="question-details"  >
+            <h3 class="question-title" style="display: flex; justify-content: space-between;">
+              <a [routerLink]="['/single', question.id]">{{ question.title }}</a>
+              <button style="border: none; background-color: inherit;" (click)="unarchive(question.id)"><i class="fa-solid fa-box-archive" style="font-size: smaller;"></i></button>
+            </h3>
+            <div class="question-meta">
+              <span class="tags">
+                <!-- No need to split, just iterate over the array directly -->
+                <a href="#" class="tag" *ngFor="let tag of question.tags">{{ tag }}</a>
+              </span>
+              <span class="time-ago">asked {{ question.date | date }}</span>
+            </div>
+            <div class="description" [innerHTML]="question.description"></div>
+          </div>
+          
+          
+        </div>
+      </div>    </ng-container>
+
+    
   </div>
 </div>

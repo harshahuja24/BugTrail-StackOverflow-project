@@ -7,15 +7,15 @@ import { DatabaseService } from 'src/app/shared/services/database.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  activeTab: 'questions' | 'answers' = 'questions';
+  activeTab: 'questions' | 'answers' | 'archive' = 'questions';
   user: any;
   allQuestions: any[] = [];
   answeredQuestions: any[] = [];
 
   allBadges: any = [
     { name: 'Fresher', level: 'bronze', threshold: 0 },
-    { name: 'Intermediate', level: 'silver', threshold: 5 },
-    { name: 'Expert', level: 'gold', threshold: 10 }
+    { name: 'Intermediate', level: 'silver', threshold: 0 },
+    { name: 'Expert', level: 'gold', threshold: 2 }
   ];
   currentBadge: any;
 
@@ -48,6 +48,8 @@ export class ProfileComponent implements OnInit {
     );
   }
 
+ 
+
   assignBadge(): void {
     const totalContributions = this.allQuestions.length + this.answeredQuestions.length;
     this.currentBadge = this.allBadges.reduce(
@@ -59,7 +61,30 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  setActiveTab(tab: 'questions' | 'answers'): void {
+  setActiveTab(tab: 'questions' | 'answers' | 'archive'): void {
     this.activeTab = tab;
+  }
+
+  archive(id:any){
+    console.log(id)
+    this.databaseService.questions.find((elem:any)=>{
+    if(elem.id == +id){
+      elem.activeYN = 0;
+    }
+   });
+   console.log(this.databaseService.questions)
+   localStorage.setItem("questions",JSON.stringify(this.databaseService.questions));
+  }
+
+  unarchive(id:any){
+    console.log(id)
+    this.databaseService.questions.find((elem:any)=>{
+    if(elem.id == +id){
+      elem.activeYN = 1;
+    }
+   });
+   console.log(this.databaseService.questions)
+   localStorage.setItem("questions",JSON.stringify(this.databaseService.questions));
+  
   }
 }

@@ -272,6 +272,7 @@ export class CreateQuestComponent {
       const codeBlock = formValues.codeSnippet ? 
         `\n\`\`\`${formValues.codeLanguage}\n${formValues.codeSnippet}\n\`\`\`\n` : '';
       
+      
       const newQuestion = {
         title: formValues.questTitle,
         description: formValues.htmlContent + codeBlock,
