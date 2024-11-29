@@ -7,9 +7,14 @@
     <div>
       <label>Quest Description:</label>
       <angular-editor formControlName="htmlContent" [config]="config"></angular-editor>
+    <button (click)="fun()">
+        <i class="fa-solid fa-paint-roller" ></i>
+      </button>
       
     </div>
+    <app-canvas *ngIf="viewCanvas"  [viewCanvas]="viewCanvas"></app-canvas>
     
+
     <div class="code-section">
       <label>Code Snippet:</label>
       <select formControlName="codeLanguage">

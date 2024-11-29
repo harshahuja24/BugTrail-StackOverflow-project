@@ -215,6 +215,7 @@ import { DatabaseService } from 'src/app/shared/services/database.service';
 })
 export class CreateQuestComponent {
   // Initialize tags from the database service
+  viewCanvas!:any
 
   constructor(private databaseService: DatabaseService, private router:Router) {
     // Load the tags from the service
@@ -285,9 +286,14 @@ export class CreateQuestComponent {
       console.log('Question created and saved:', newQuestion);
       this.createQuestForm.reset();
       this.router.navigate(['/all'])
-    } else {
-      console.error('Form is invalid');
-    }
+    } 
+    // else {
+    //   // console.error('Form is invalid');
+    // }
+  }
+
+  fun(){
+    this.viewCanvas=!this.viewCanvas
   }
 
   getSelectedTags() {

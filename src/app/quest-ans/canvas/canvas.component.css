@@ -1,0 +1,29 @@
+.canvas-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .drawing-canvas {
+    border: 1px solid #000;
+    background-color: #f9f9f9;
+    cursor: crosshair;
+  }
+  
+  .canvas-controls {
+    margin-top: 10px;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { CanvasComponent } from './canvas/canvas.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,11 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ViewSingleQuestComponent,
     VotingComponent,
     SearchComponent,
+<<<<<<< HEAD
     
+=======
+    CanvasComponent
+>>>>>>> a23dc7e46459e79a35d39ca78f6547e6c9ea0f37
   ],
   imports: [
     CommonModule,           // Use CommonModule instead of BrowserModule

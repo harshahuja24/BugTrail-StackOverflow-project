@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ErrorComponent } from './home/error/error.component';
+import { CanvasComponent } from './quest-ans/canvas/canvas.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path:'profile',
     component:ProfileComponent
+  },
+  {
+    path:'canvas',
+    component:CanvasComponent
   },
   {
     path:'**',
