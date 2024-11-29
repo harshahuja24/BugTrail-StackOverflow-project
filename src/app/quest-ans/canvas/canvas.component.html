@@ -1,0 +1,15 @@
+<div class="canvas-container">
+    <!-- Header or Title -->
+    <h3>Canvas Drawing Area</h3>
+    
+    <!-- Canvas Element -->
+    <canvas #myCanvas [width]="canvas.width" [height]="canvas.height" class="drawing-canvas">
+      Your browser does not support the HTML5 canvas element.
+    </canvas>
+    
+    <!-- Controls -->
+    <div class="canvas-controls">
+      <button (click)="refresh()">Clear Canvas</button>
+    </div>
+  </div>
+  
