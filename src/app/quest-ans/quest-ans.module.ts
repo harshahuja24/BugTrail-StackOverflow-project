@@ -16,7 +16,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ViewAllQuestComponent,
     ViewSingleQuestComponent,
     VotingComponent,
-    SearchComponent
+    SearchComponent,
+    
   ],
   imports: [
     CommonModule,           // Use CommonModule instead of BrowserModule
