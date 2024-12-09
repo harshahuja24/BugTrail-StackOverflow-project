@@ -1,15 +1,31 @@
 <div class="canvas-container">
-    <!-- Header or Title -->
-    <h3>Canvas Drawing Area</h3>
+  <div class="canvas-tools">
+    <button (click)="setTool('pencil')" [class.active]="currentTool === 'pencil'">Pencil</button>
+    <button (click)="setTool('line')" [class.active]="currentTool === 'line'">Line</button>
+    <button (click)="setTool('rectangle')" [class.active]="currentTool === 'rectangle'">Rectangle</button>
+    <button (click)="setTool('circle')" [class.active]="currentTool === 'circle'">Circle</button>
     
-    <!-- Canvas Element -->
-    <canvas #myCanvas [width]="canvas.width" [height]="canvas.height" class="drawing-canvas">
-      Your browser does not support the HTML5 canvas element.
-    </canvas>
+    <input type="color" (change)="setStrokeColor($event)" title="Select Color">
     
-    <!-- Controls -->
-    <div class="canvas-controls">
-      <button (click)="refresh()">Clear Canvas</button>
-    </div>
+    <input 
+      type="range" 
+      min="1" 
+      max="20" 
+      [value]="lineWidth"
+      (input)="setLineWidth($event)"
+      title="Line Width"
+    >
+    <span>{{lineWidth}}</span>
+    
+    <button (click)="saveCanvasAsImage()">Save</button>
+    <button (click)="refresh()">Clear</button>
   </div>
-  
+
+  <canvas 
+    #myCanvas 
+    [width]="canvas.width" 
+    [height]="canvas.height" 
+    class="drawing-canvas">
+    Your browser does not support the HTML5 canvas element.
+  </canvas>
+</div>

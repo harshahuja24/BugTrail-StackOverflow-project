@@ -303,4 +303,6 @@ export class CreateQuestComponent {
   toggleTagSelection(tag: any) {
     tag.selected = !tag.selected;
   }
+
+  
 }

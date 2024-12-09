@@ -14,8 +14,8 @@ export class ProfileComponent implements OnInit {
 
   allBadges: any = [
     { name: 'Fresher', level: 'bronze', threshold: 0 },
-    { name: 'Intermediate', level: 'silver', threshold: 0 },
-    { name: 'Expert', level: 'gold', threshold: 2 }
+    { name: 'Intermediate', level: 'silver', threshold: 2 },
+    { name: 'Expert', level: 'gold', threshold: 3 }
   ];
   currentBadge: any;
 
@@ -87,4 +87,8 @@ export class ProfileComponent implements OnInit {
    localStorage.setItem("questions",JSON.stringify(this.databaseService.questions));
   
   }
+ 
+
+  
+  
 }
