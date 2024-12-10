@@ -17,6 +17,7 @@ export class LoginComponent {
   });
   isValidLogin:boolean = true;
   loggedInUserId!: any;
+  answers:any;
   
   constructor(private router:Router, private databaseService: DatabaseService){
 
@@ -72,9 +73,19 @@ export class LoginComponent {
 
       // Navigate to the main page or dashboard
       this.router.navigate(['']);
+      this.reInitializingAnswersVoteFlags();
     } else {
       console.log('Invalid login');
     }
 }
+
+  reInitializingAnswersVoteFlags(){
+    this.answers = this.databaseService.answers;
+
+    this.answers.forEach((ans:any)=>{
+      ans.isUpVote = true;
+      ans.isDownVote = true;
+    })
+  }
 
 }
