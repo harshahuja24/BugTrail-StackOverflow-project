@@ -97,7 +97,12 @@ export class ViewSingleQuestComponent {
       voteCount:0,
       date: new Date(),
       isBest: false ,
-      voters:{[this.currentUser]:{isUpvote:true,isDownVote:true}}
+      voters: {
+        [this.currentUser]: {
+          isUpvote: true,
+          isDownVote: true
+        }
+      }
     };
 
 
@@ -119,76 +124,168 @@ export class ViewSingleQuestComponent {
     }
 
  
-  voteUp(item: any) {
-    // if (item.voteCount === undefined) {
-    //   item.voteCount = 0;
-    // }
-    //   this.prevVoteCount = item.voteCount;
-    // if(this.isClickedUp)  item.voteCount+=1;
-    // if(item.voteCount - this.prevVoteCount==1 && this.currentUser ){
-    //     this.isClickedUp=false
-    //    let answer = this.databaseService.answers.find((ans:any)=> ans.id===item.id)
-    //    answer.voteCount=item.voteCount
-    //    localStorage.setItem("answers",JSON.stringify(this.databaseService.answers))
-    // }
-    // if(this.isClicked==true)  item.voteCount++;
-    console.log(item.isUpVote)
-    let answer = this.databaseService.answers.find((ans:any)=> ans.id===item.id)
-    if(answer.isUpVote){
-      this.prevVoteCount = item.voteCount;
-      console.log("prevvotecount"+this.prevVoteCount)
-       item.voteCount+=1;
-       console.log("item.votecount"+item.voteCount)
-      if(item.voteCount - this.prevVoteCount==1 && this.currentUser ){
-          this.isClickedUp=false
-          item.isUpVote=false
-          item.isDownVote=true
-        let answer = this.databaseService.answers.find((ans:any)=> ans.id===item.id)
-        answer.voteCount=item.voteCount
-        answer.isUpVote=item.isUpVote
-        answer.isDownVote=item.isDownVote
-        localStorage.setItem("answers",JSON.stringify(this.databaseService.answers))
-      }
-    }
-  }
+  // voteUp(item: any) {
+  //   // if (item.voteCount === undefined) {
+  //   //   item.voteCount = 0;
+  //   // }
+  //   //   this.prevVoteCount = item.voteCount;
+  //   // if(this.isClickedUp)  item.voteCount+=1;
+  //   // if(item.voteCount - this.prevVoteCount==1 && this.currentUser ){
+  //   //     this.isClickedUp=false
+  //   //    let answer = this.databaseService.answers.find((ans:any)=> ans.id===item.id)
+  //   //    answer.voteCount=item.voteCount
+  //   //    localStorage.setItem("answers",JSON.stringify(this.databaseService.answers))
+  //   // }
+  //   // if(this.isClicked==true)  item.voteCount++;
+  //   console.log(item.isUpVote)
+  //   let answer = this.databaseService.answers.find((ans:any)=> ans.id===item.id)
+  //   if(answer.isUpVote){
+  //     this.prevVoteCount = item.voteCount;
+  //     console.log("prevvotecount"+this.prevVoteCount)
+  //      item.voteCount+=1;
+  //      console.log("item.votecount"+item.voteCount)
+  //     if(item.voteCount - this.prevVoteCount==1 && this.currentUser ){
+  //         this.isClickedUp=false
+  //         item.isUpVote=false
+  //         item.isDownVote=true
+  //       let answer = this.databaseService.answers.find((ans:any)=> ans.id===item.id)
+  //       answer.voteCount=item.voteCount
+  //       answer.isUpVote=item.isUpVote
+  //       answer.isDownVote=item.isDownVote
+  //       localStorage.setItem("answers",JSON.stringify(this.databaseService.answers))
+  //     }
+  //   }
+  // }
 
-  voteDown(item: any) {
-    let answer = this.databaseService.answers.find((ans:any)=> ans.id===item.id)
-    if(answer.isDownVote && this.currentUser){
-      console.log("inside downvote")
-    // if (item.voteCount === undefined) {
-    //   item.voteCount = 0;
-    // }
-          this.prevVoteCount = item.voteCount;
+  // voteDown(item: any) {
+  //   let answer = this.databaseService.answers.find((ans:any)=> ans.id===item.id)
+  //   if(answer.isDownVote && this.currentUser){
+  //     console.log("inside downvote")
+  //   // if (item.voteCount === undefined) {
+  //   //   item.voteCount = 0;
+  //   // }
+  //         this.prevVoteCount = item.voteCount;
       
-      if(this.isClickedDown && item.voteCount>0)  item.voteCount-=1;
-      console.log(item.voteCount)
-      // if(item.voteCount==0){
-      //   if(this.prevVoteCount - item.voteCount==1 && this.currentUser ){
-      //       this.isClickedDown=false
-      //       item.isDownVote=false
-      //   }
-      // }
-      item.isDownVote=false
-          item.isUpVote=true
-     if(item.voteCount - this.prevVoteCount==1 && this.currentUser ){
-          this.isClickedDown=false
-          // item.isDownVote=false
-          // item.isUpVote=true
-        }
-      let answer = this.databaseService.answers.find((ans:any)=> ans.id===item.id)
-      answer.voteCount=item.voteCount
-      answer.isUpVote=item.isUpVote
-      answer.isDownVote=item.isDownVote
-      localStorage.setItem("answers",JSON.stringify(this.databaseService.answers))
-  }
+  //     if(this.isClickedDown && item.voteCount>0)  item.voteCount-=1;
+  //     console.log(item.voteCount)
+  //     // if(item.voteCount==0){
+  //     //   if(this.prevVoteCount - item.voteCount==1 && this.currentUser ){
+  //     //       this.isClickedDown=false
+  //     //       item.isDownVote=false
+  //     //   }
+  //     // }
+  //     item.isDownVote=false
+  //         item.isUpVote=true
+  //    if(item.voteCount - this.prevVoteCount==1 && this.currentUser ){
+  //         this.isClickedDown=false
+  //         // item.isDownVote=false
+  //         // item.isUpVote=true
+  //       }
+  //     let answer = this.databaseService.answers.find((ans:any)=> ans.id===item.id)
+  //     answer.voteCount=item.voteCount
+  //     answer.isUpVote=item.isUpVote
+  //     answer.isDownVote=item.isDownVote
+  //     localStorage.setItem("answers",JSON.stringify(this.databaseService.answers))
+  // }
     
-  }
+  // }
+
+
 
 
   // vote(item:any,whichVote:number){
 
   // }
+
+  voteUp(item: any) {
+    // Find the specific answer in the database
+    let answer = this.databaseService.answers.find((ans: any) => ans.id === item.id);
+    
+    // If the user is logged in
+    if (this.currentUser) {
+      // Check if this user has already voted
+      const userVoteInfo = answer.voters[this.currentUser];
+      
+      // If no previous vote information exists or upvote is still allowed
+      if (!userVoteInfo || userVoteInfo.isUpvote) {
+        // Store the previous vote count
+        this.prevVoteCount = item.voteCount;
+              
+          item.voteCount += 1;
+        
+        
+        // Ensure voters object exists
+        if (!answer.voters) {
+          answer.voters = {};
+        }
+        
+        // Update the voter information
+        answer.voters[this.currentUser] = {
+          isUpvote: false,  // Disable further upvoting
+          isDownVote: true
+        };
+        
+        // Update the answer flags based on previous state
+        answer.isUpVote = false;
+        answer.isDownVote = true;
+        
+        // Update the answer in the database
+        let indexToUpdate = this.databaseService.answers.findIndex((ans: any) => ans.id === item.id);
+        this.databaseService.answers[indexToUpdate] = answer;
+        
+        // Update local storage
+        localStorage.setItem("answers", JSON.stringify(this.databaseService.answers));
+        
+        // Refresh the answers list
+        this.answers = this.databaseService.answers.filter((ans: any) => ans.qid == this.activated_id);
+      }
+    }
+  }
+  
+  voteDown(item: any) {
+    // Find the specific answer in the database
+    let answer = this.databaseService.answers.find((ans: any) => ans.id === item.id);
+    
+    // If the user is logged in
+    if (this.currentUser) {
+      // Check if this user has already voted
+      const userVoteInfo = answer.voters[this.currentUser];
+      
+      // If no previous vote information exists or downvote is still allowed
+      // And vote count is greater than 0
+      if ((!userVoteInfo || userVoteInfo.isDownVote) && item.voteCount > 0) {
+        // Store the previous vote count
+        this.prevVoteCount = item.voteCount;
+              
+          item.voteCount -= 1;
+        
+        // Ensure voters object exists
+        if (!answer.voters) {
+          answer.voters = {};
+        }
+        
+        // Update the voter information
+        answer.voters[this.currentUser] = {
+          isUpvote: true,    // Allow upvoting again
+          isDownVote: false  // Disable further downvoting
+        };
+        
+        // Update the answer flags
+        answer.isDownVote = false;
+        answer.isUpVote = true;
+        
+        // Update the answer in the database
+        let indexToUpdate = this.databaseService.answers.findIndex((ans: any) => ans.id === item.id);
+        this.databaseService.answers[indexToUpdate] = answer;
+        
+        // Update local storage
+        localStorage.setItem("answers", JSON.stringify(this.databaseService.answers));
+        
+        // Refresh the answers list
+        this.answers = this.databaseService.answers.filter((ans: any) => ans.qid == this.activated_id);
+      }
+    }
+  }
 
   checkPhatakaValid(){
     this.databaseService.answers.forEach((ans:any) => {

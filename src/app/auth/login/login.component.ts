@@ -80,14 +80,27 @@ export class LoginComponent {
     }
 }
 
-  reInitializingAnswersVoteFlags(){
-    this.answers = this.databaseService.answers;
+reInitializingAnswersVoteFlags() {
+  this.answers = this.databaseService.answers;
+  let currentUser = this.databaseService.loggedInUserId;
 
-    this.answers.forEach((ans:any)=>{
+  // Reset vote flags for all answers
+  this.answers.forEach((ans: any) => {
+    // If this user has previously voted on this answer
+    if (ans.voters && ans.voters[currentUser]) {
+      // Restore the previous voting state for this user
+      const userVoteInfo = ans.voters[currentUser];
+      ans.isUpVote = userVoteInfo.isUpvote;
+      ans.isDownVote = userVoteInfo.isDownVote;
+    } else {
+      // If no previous vote, reset to default
       ans.isUpVote = true;
       ans.isDownVote = true;
-    })
-    localStorage.setItem("answers",this.databaseService.answers)
-  }
+    }
+  });
+  
+  // Update local storage
+  localStorage.setItem("answers", JSON.stringify(this.databaseService.answers));
+}
 
 }

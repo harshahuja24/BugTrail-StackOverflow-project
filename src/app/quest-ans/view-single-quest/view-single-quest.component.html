@@ -31,15 +31,19 @@
       </div>
 
       <div class="img">
-          <button class="fs-5 border rounded-5" (click)="voteUp(answer)">
-              <img src="assets/up-arrow-key.png" alt="Upvote">
-          </button>
-          <br>
-          <span>{{ answer.voteCount || 0 }}</span>
-          <br>
-          <button class="fs-5 border rounded-5" (click)="voteDown(answer)">
-              <img src="assets/downwards-arrow-key.png" alt="Downvote">
-          </button>
+        <button 
+          class="fs-5 border rounded-5" 
+          (click)="voteUp(answer)"
+          
+        >
+          <img src="assets/up-arrow-key.png" alt="Upvote">
+        </button>
+        <br>
+        <span>{{ answer.voteCount || 0 }}</span>
+        <br>
+        <button class="fs-5 border rounded-5" (click)="voteDown(answer)" >
+          <img src="assets/downwards-arrow-key.png" alt="Downvote">
+        </button>
       </div>
 
       <div *ngFor="let question of questions" >
