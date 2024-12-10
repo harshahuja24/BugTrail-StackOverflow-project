@@ -1,29 +1,47 @@
 .canvas-container {
-    text-align: center;
-    margin: 20px;
-  }
-  
-  .drawing-canvas {
-    border: 1px solid #000;
-    background-color: #f9f9f9;
-    cursor: crosshair;
-  }
-  
-  .canvas-controls {
-    margin-top: 10px;
-  }
-  
-  button {
-    margin: 5px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.canvas-tools {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.canvas-tools button {
+  padding: 5px 10px;
+  background-color: #e0e0e0;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.canvas-tools button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.canvas-tools input[type="color"] {
+  width: 50px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.canvas-tools input[type="range"] {
+  width: 100px;
+}
+
+.drawing-canvas {
+  border: 2px solid #333;
+  background-color: white;
+  cursor: crosshair;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}

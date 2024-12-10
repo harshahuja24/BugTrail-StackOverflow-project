@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DatabaseService } from 'src/app/shared/services/database.service';
+import confetti from 'canvas-confetti';
+
 
 @Component({
   selector: 'app-view-single-quest',
@@ -15,6 +17,8 @@ export class ViewSingleQuestComponent {
   question: any = {};  // Object to store the current question's details
   questions = this.databaseService.questions;
   downVote: any;
+
+  phatakaCounter:number = 0;
   currentUser:any
   
 
@@ -92,7 +96,17 @@ export class ViewSingleQuestComponent {
 
     // Refresh the answer list to show the new answer
     this.answers = this.databaseService.answers.filter((ans: any) => ans.qid == this.activated_id);
-  }
+    this.checkPhatakaValid()
+
+    if(this.phatakaCounter == 3){
+
+      this.triggerConfetti();
+      
+    }
+    else{
+      this.phatakaCounter = 0;
+    }
+    }
 
  
   voteUp(item: any) {
@@ -109,6 +123,32 @@ export class ViewSingleQuestComponent {
     // item.voteCount--; 
       item.voteCount=0; 
   }
+
+  checkPhatakaValid(){
+    this.databaseService.answers.forEach((ans:any) => {
+
+      if(ans.uid == +this.databaseService.loggedInUserId){
+        this.phatakaCounter +=1;
+        
+      }
+      
+    });
+
+    console.log(this.phatakaCounter)
+
+ 
+  }
+  
+  triggerConfetti() {
+    confetti({
+      particleCount: 2000,
+      spread: 1000,
+      origin: { x: 0.5,  y: 0.5 },
+    });
+  }
+  
+ 
+
   
   markBestAnswer(answer: any) {
     this.databaseService.answers.forEach((ans: any) => {

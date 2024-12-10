@@ -313,6 +313,8 @@ export class CreateQuestComponent {
     tag.selected = !tag.selected;
   }
 
+  
+
 //   animate() {
 
 //     const progress = document.querySelector(".progress") as HTMLElement;

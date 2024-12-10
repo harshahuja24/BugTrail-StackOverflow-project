@@ -27,6 +27,7 @@ import { CanvasComponent } from './canvas/canvas.component';
     AngularEditorModule,
     HttpClientModule,
     ReactiveFormsModule,
+    
   ],
   exports: [
     CreateQuestComponent,
