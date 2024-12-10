@@ -42,9 +42,11 @@
           </button>
       </div>
 
-      <button (click)="markBestAnswer(answer)" [disabled]="answer.isBest">
-          {{ answer.isBest ? 'Best Answer' : 'Mark as Best Answer' }}
-      </button>
+      <div *ngFor="let question of questions" >
+        <button *ngIf="question.authorId==currentUser && question.id==answer.qid" (click)="markBestAnswer(answer)" [disabled]="answer.isBest">
+            {{ answer.isBest ? 'Best Answer' : 'Mark as Best Answer' }}
+        </button>
+      </div>
   </div>
 </div>
 </div>

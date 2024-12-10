@@ -9,11 +9,13 @@ import { DatabaseService } from 'src/app/shared/services/database.service';
   styleUrls: ['./view-single-quest.component.css']
 })
 export class ViewSingleQuestComponent {
+  isAuthor!:boolean
   activated_id!: any;
   answers: any[] = []; // Array to store answers for the current question
   question: any = {};  // Object to store the current question's details
   questions = this.databaseService.questions;
   downVote: any;
+  currentUser:any
   
 
   constructor(private databaseService: DatabaseService, private activatedRoute: ActivatedRoute) {}
@@ -32,6 +34,18 @@ export class ViewSingleQuestComponent {
       }
   
       this.answers = this.databaseService.answers.filter((ans: any) => ans.qid == this.activated_id);
+
+      this.currentUser=this.databaseService.loggedInUserId
+      console.log(this.currentUser)
+      if(+this.currentUser>0) this.isAuthor=true
+      else{  this.isAuthor=false}
+      console.log(this.isAuthor)
+
+      this.questions = this.databaseService.questions
+      // let questions=this.databaseService.questions.filter((ques:any)=> ques.authorId == currentUser)
+      // console.log(questions)
+ 
+
     });
   }
   
@@ -85,19 +99,17 @@ export class ViewSingleQuestComponent {
     if (item.voteCount === undefined) {
       item.voteCount = 0;
     }
-    item.voteCount++;  
+    item.voteCount=1;  
   }
   
   voteDown(item: any) {
     if (item.voteCount === undefined) {
       item.voteCount = 0;
     }
-    item.voteCount--;  
+    // item.voteCount--; 
+      item.voteCount=0; 
   }
   
-  
- 
-
   markBestAnswer(answer: any) {
     this.databaseService.answers.forEach((ans: any) => {
       ans.isBest = false;

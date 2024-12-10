@@ -207,6 +207,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Tags } from 'src/app/shared/interfaces/tags.interface';
 import { DatabaseService } from 'src/app/shared/services/database.service';
+import confetti from 'canvas-confetti';
+// const confetti = require('canvas-confetti');
+
 
 @Component({
   selector: 'app-create-quest',
@@ -214,11 +217,17 @@ import { DatabaseService } from 'src/app/shared/services/database.service';
   styleUrls: ['./create-quest.component.css']
 })
 export class CreateQuestComponent {
+
+
   // Initialize tags from the database service
   viewCanvas!:any
 
   constructor(private databaseService: DatabaseService, private router:Router) {
     // Load the tags from the service
+  }
+
+  ngOnInit():void{
+    console.log('Confetti function:', confetti);
   }
   tags = this.databaseService.tags;
   
@@ -303,4 +312,60 @@ export class CreateQuestComponent {
   toggleTagSelection(tag: any) {
     tag.selected = !tag.selected;
   }
+
+//   animate() {
+
+//     const progress = document.querySelector(".progress") as HTMLElement;
+    
+//     if (progress !== null){
+//       const options = {
+//         duration: 2000,
+//         easing: "ease-in-out",
+//         iterations: 2,
+//         direction: "alternate" //ERROR HERE
+//       }
+    
+//       progress.animate({
+//         width: ["0%", "10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "80%", "80%"],
+//         backgroundSize: ["0%", "1000%", "500%", "333%", "250%", "200%", "166%", "142%", "125%", "125%", "125%"]
+//       });
+//     }
+// }
+
+// const confetti = require('canvas-confetti');
+
+
+startConfetti(): void {
+  const end = Date.now() + 15 * 1000;
+
+  const colors = ['#bb0000', '#ffffff'];
+
+  const frame = () => {
+    confetti({
+      particleCount: 2,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: colors,
+    });
+
+    confetti({
+      particleCount: 2,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: colors,
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  };
+
+  frame();
+}
+
+
+
+
 }

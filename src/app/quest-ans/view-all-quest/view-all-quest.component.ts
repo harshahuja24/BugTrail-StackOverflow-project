@@ -15,9 +15,7 @@ export class ViewAllQuestComponent {
 
   questions:any = []
   ngOnInit(){
-
-     this.questions = this.databaseService.questions
-
+   
    
   }
   
