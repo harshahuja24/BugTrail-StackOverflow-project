@@ -96,7 +96,8 @@ export class ViewSingleQuestComponent {
       isDownVote:true, // Initialize votes
       voteCount:0,
       date: new Date(),
-      isBest: false 
+      isBest: false ,
+      voters:{[this.currentUser]:{isUpvote:true,isDownVote:true}}
     };
 
 

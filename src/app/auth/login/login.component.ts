@@ -1,3 +1,4 @@
+import { LiteralPrimitive } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -86,6 +87,7 @@ export class LoginComponent {
       ans.isUpVote = true;
       ans.isDownVote = true;
     })
+    localStorage.setItem("answers",this.databaseService.answers)
   }
 
 }
